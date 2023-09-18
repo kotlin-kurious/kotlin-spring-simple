@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.9.0"
+    kotlin("jvm") version "1.8.0";
     application
+
 }
 
 group = "org.example"
@@ -11,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.springframework:spring-context:6.0.6")
     testImplementation(kotlin("test"))
 }
 
@@ -18,10 +22,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-kotlin {
-    jvmToolchain(8)
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
 }
 
-application {
-    mainClass.set("MainKt")
-}
