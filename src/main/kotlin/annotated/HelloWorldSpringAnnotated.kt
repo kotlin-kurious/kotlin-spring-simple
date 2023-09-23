@@ -1,0 +1,14 @@
+package annotated
+
+import decoupled.MessageRenderer
+import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
+
+object HelloWorldSpringAnnotated {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val ctx: ApplicationContext = AnnotationConfigApplicationContext(HelloWorldConfiguration::class.java)
+        val mr: MessageRenderer = ctx.getBean("renderer", MessageRenderer::class.java)
+        mr.render()
+    }
+}
